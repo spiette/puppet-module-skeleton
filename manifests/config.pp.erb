@@ -1,0 +1,28 @@
+# == Class <%= metadata.name %>::config
+# This class is meant to be called from <%= metadata.name %>
+# it bakes the configuration file
+# === Parameters
+#
+# [*options*]
+#   A hash of extra options to set in the configuration
+#
+# === Example
+#
+#  class { <%= metadata.name %>:
+#    options => {
+#      'key1' => 'value1',
+#      'key2' => 'value2',
+#    }
+#  }
+class <%= metadata.name %>::config(
+    $servers=$<%= metadata.name %>::servers,
+    $options=$<%= metadata.name %>::options,
+    ) {
+  include <%= metadata.name %>::params
+  file { $<%= metadata.name %>::params::conffile:
+    ensure  => present,
+    mode    => '0440',
+    content => template('<%= metadata.name %>/<%= metadata.name %>.conf.erb')
+  }
+}
+

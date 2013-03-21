@@ -1,0 +1,34 @@
+# == Class: <%= metadata.name %>
+#
+# Full description of class <%= metadata.name %> here.
+#
+# === Parameters
+#
+# Document parameters here.
+#
+# [*sample_parameter*]
+#   Explanation of what this parameter affects and what it defaults to.
+#   e.g. "Specify one or more upstream ntp servers as an array."
+#
+# === Examples
+#
+#  class { <%= metadata.name %>:
+#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ]
+#  }
+#
+# === Authors
+#
+# Author Name <author@domain.com>
+#
+# === Copyright
+#
+# Copyright 2013 Your name here, unless otherwise noted.
+#
+class <%= metadata.name %> () {
+  Class["${module_name}::install"]->
+  Class["${module_name}::config"]~>
+  Class["${module_name}::service"]
+  include <%= metadata.name %>::install
+  include <%= metadata.name %>::config
+  include <%= metadata.name %>::service
+}
