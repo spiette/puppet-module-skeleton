@@ -25,10 +25,9 @@
 # Copyright 2013 Your name here, unless otherwise noted.
 #
 class <%= metadata.name %> () {
-  Class["${module_name}::install"]->
-  Class["${module_name}::config"]~>
-  Class["${module_name}::service"]
-  include <%= metadata.name %>::install
-  include <%= metadata.name %>::config
-  include <%= metadata.name %>::service
+  anchor { "${module_name}::begin": } ->
+  class {"${module_name}::install": } ->
+  class {"${module_name}::config": } ~>
+  class {"${module_name}::service": } ~>
+  anchor { "${module_name}::end": }
 }
