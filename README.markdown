@@ -37,8 +37,7 @@ export it like this:
 
     git clone https://github.com/spiette/puppet-module-skeleton 
     cd puppet-module-skeleton
-    # on next command, last / is mandatory
-    find skeleton -type f | git checkout-index --stdin --force --prefix="$HOME/.puppet/var/puppet-module/" --
+    rake install
 
 ## Usage
 
