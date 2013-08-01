@@ -4,3 +4,6 @@ rvm:
 env:
   - PUPPET_VERSION=2.7.21
   - PUPPET_VERSION=3.2.1
+notifications:
+  email: false
+
